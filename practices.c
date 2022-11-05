@@ -462,39 +462,121 @@
 //}
 
 //53
+//#define _CRT_SECURE_NO_WARNINGS
+//#include <stdio.h>
+//#include <math.h>
+//
+//int main() {
+//	double a = 1;
+//	double b = 1;
+//	double c = 1;
+//
+//	while (~scanf("%lf %lf %lf", &a, &b, &c))
+//	{
+//		if (0.0 == a)
+//		{
+//			printf("Not quadratic equation\n");
+//		}
+//		else
+//		{
+//			double der = (b*b) - (4 * a*c);
+//			if (0.0 == der)
+//			{
+//				printf("x1=x2=%.2lf\n", (-b) / (2 * a));
+//			}
+//			else if (der > 0.0)
+//			{
+//				printf("x1=%.2lf;x2=%.2lf\n", (-b - der) / (2 * a), (-b + der) / (2 * a));
+//			}
+//			else
+//			{
+//				double real = (-b) / (2 * a);
+//				double vir = (sqrt(-der)) / (2 * a);
+//				printf("x1=%.2lf-%.2lfi;x2=%.2lf+%.2lfi\n", real, vir, real, vir);
+//			}
+//		}
+//	}
+//	return 0;
+//}
+
+//99
+//#define _CRT_SECURE_NO_WARNINGS
+//#include <stdio.h>
+//
+//int main() {
+//	int n = 1;
+//	int arr[1000] = { 0 };
+//	int del = 0;
+//	int i = 1;
+//	int j = 1;
+//	int k = 1;
+//
+//	scanf("%d", &n);
+//	for (i = 0; i<n; i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//
+//	for (i = 0; i<n; i++)
+//	{
+//
+//		for (j = i + 1; j < n - del; j++)
+//		{
+//			if (arr[i] == arr[j])
+//			{
+//				del++;
+//				for (k = j; k < n - del; k++)
+//				{
+//					arr[k] = arr[k + 1];
+//				}
+//				j--;
+//			}
+//		}
+//	}
+//
+//	for (i = 0; i<n - del; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+//100
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <math.h>
 
-int main() {
-	double a = 1;
-	double b = 1;
-	double c = 1;
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
 
-	while (~scanf("%lf %lf %lf", &a, &b, &c))
+#include<stdio.h>
+int main()
+{
+	int n, m;
+	scanf("%d %d\n", &n, &m);
+	int i, j, arr[2000];
+	int tmp;
+	for (i = 0; i<n; i++)//录入n序列
 	{
-		if (0.0 == a)
+		scanf("%d", &arr[i]);
+	}
+	for (i = n; i<n + m; i++)//在n序列后，录入m序列
+	{
+		scanf("%d", &arr[i]);
+	}
+	for (i = 0; i<n + m; i++)
+	{
+		for (j = 0; j<n + m - i - 1; j++)
 		{
-			printf("Not quadratic equation\n");
-		}
-		else
-		{
-			double der = (b*b) - (4 * a*c);
-			if (0.0 == der)
+			if (arr[j] > arr[j + 1])
 			{
-				printf("x1=x2=%.2lf\n", (-b) / (2 * a));
-			}
-			else if (der > 0.0)
-			{
-				printf("x1=%.2lf;x2=%.2lf\n", (-b - der) / (2 * a), (-b + der) / (2 * a));
-			}
-			else
-			{
-				double real = (-b) / (2 * a);
-				double vir = (sqrt(-der)) / (2 * a);
-				printf("x1=%.2lf-%.2lfi;x2=%.2lf+%.2lfi\n", real, vir, real, vir);
+				tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
 			}
 		}
 	}
-	return 0;
+	for (i = 0; i<n + m; i++)
+	{
+		printf("%d ", arr[i]);
+	}
 }
